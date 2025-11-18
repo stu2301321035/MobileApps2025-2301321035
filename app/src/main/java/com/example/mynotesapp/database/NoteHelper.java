@@ -41,4 +41,17 @@ public class NoteHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public void updateData(String id,String title, String description){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put("id",id);
+        values.put("title",title);
+        values.put("description",description);
+
+        db.update("notes_table",values,"id=?",new String[]{id});
+    }
+
+
 }

@@ -26,8 +26,5 @@ public class UpdateNoteActivity extends AppCompatActivity {
         updateDesc = findViewById(R.id.edUpdateDesc);
         btnUpdate = findViewById(R.id.btnUpdate);
 
-
-
-
     }
 }

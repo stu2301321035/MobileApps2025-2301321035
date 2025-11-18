@@ -9,14 +9,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-
-
-
-
-
-
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"
+        android:text="Notes"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/deep_blue"/>
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

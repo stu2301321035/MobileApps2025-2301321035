@@ -51,8 +51,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         public ViewHolder(@NonNull View itemView){
             super(itemView);
 
-            tcDesc = itemView.findViewById(R.id.edDesc);
-            tvTitle = itemView.findViewById(R.id.edTitle);
+            tcDesc = itemView.findViewById(R.id.tvDesc); // Use tvDesc
+            tvTitle = itemView.findViewById(R.id.tvTitle); // Use tvTitle
 
         }
     }

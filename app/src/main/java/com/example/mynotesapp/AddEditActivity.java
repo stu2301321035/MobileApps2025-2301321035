@@ -38,6 +38,7 @@ public class AddEditActivity extends AppCompatActivity {
                     Toast.makeText(AddEditActivity.this, "The Note is Successfully Added",Toast.LENGTH_SHORT).show();
                     edDesc.setText("");
                     edTitle.setText("");
+                    finish();
                 }else {
                     Toast.makeText(AddEditActivity.this, "The Note is not added", Toast.LENGTH_SHORT).show();
                 }

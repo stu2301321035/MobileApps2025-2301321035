@@ -1,7 +1,9 @@
 package com.example.mynotesapp.adapter;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mynotesapp.MainActivity;
 import com.example.mynotesapp.R;
 import com.example.mynotesapp.UpdateNoteActivity;
+import com.example.mynotesapp.database.NoteHelper;
 import com.example.mynotesapp.model.Note;
 
 import java.util.ArrayList;
@@ -43,7 +46,34 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         holder.tvTitle.setText(arrayList.get(position).getTitle());
         holder.tcDesc.setText(arrayList.get(position).getDescription());
 
+        holder.cardView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                new AlertDialog.Builder(context)
+                        .setTitle("Delete Entry")
+                        .setMessage("Are you sure want to delete this entry?")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int i) {
+                                NoteHelper noteHelper = new NoteHelper(context);
+                                String id = String.valueOf(arrayList.get(position).getId());
 
+                                noteHelper.deleteData(id);
+                                dialog.dismiss();
+                                context.startActivity(new Intent(context,MainActivity.class));
+                            }
+                        })
+                        .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .show();
+
+                return true;
+            }
+        });
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -7,14 +7,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import java.util.function.DoubleBinaryOperator;
-
 public class NoteHelper extends SQLiteOpenHelper {
 
 
     private static final String DATABASE = "NOTES_DB";
     private static final int VERSION = 2;
-    public NoteHelper(@Nullable Context context, @Nullable String name) {
+    public NoteHelper(@Nullable Context context) {
         super(context, DATABASE, null,VERSION);
     }
 

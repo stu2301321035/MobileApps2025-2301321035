@@ -1,5 +1,6 @@
 package com.example.mynotesapp;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -26,4 +27,13 @@ public class NoteHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists notes_table");
     }
+
+    public void insertData(String title, String description){
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("title",title);
+        values.put("description",description);
+        database.insert("notes_table",null,values);
+    }
+
 }

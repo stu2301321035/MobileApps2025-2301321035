@@ -53,5 +53,11 @@ public class NoteHelper extends SQLiteOpenHelper {
         db.update("notes_table",values,"id=?",new String[]{id});
     }
 
+    public void deleteData(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete("notes_table", "id=?", new String[]{id});
+    }
+
 
 }

@@ -50,7 +50,7 @@ public class UpdateNoteActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (updateTitle.length()>0&&updateDesc.length()>0){
                     NoteHelper noteHelper = new NoteHelper(UpdateNoteActivity.this);
-                    noteHelper.updateData(updateTitle.getText().toString(), updateDesc.getText().toString(),sId);
+                    noteHelper.updateData(sId,updateTitle.getText().toString(), updateDesc.getText().toString());
                     Toast.makeText(UpdateNoteActivity.this, "The Data is Successfully Updated", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(UpdateNoteActivity.this,MainActivity.class));
                 }else{

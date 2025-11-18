@@ -68,6 +68,7 @@
         android:layout_height="55dp"
         android:elevation="2dp"
         android:text="Save"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textSize="18sp"/>
 
 </LinearLayout>

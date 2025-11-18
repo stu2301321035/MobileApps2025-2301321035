@@ -2,6 +2,7 @@ package com.example.mynotesapp.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -32,6 +33,12 @@ public class NoteHelper extends SQLiteOpenHelper {
         values.put("title",title);
         values.put("description",description);
         database.insert("notes_table",null,values);
+    }
+
+    public Cursor showData(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from notes_table",null);
+        return cursor;
     }
 
 }

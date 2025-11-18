@@ -11,11 +11,17 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mynotesapp.database.NoteHelper;
+import com.example.mynotesapp.model.Note;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    RecyclerView recyclerView;
+    ArrayList<Note> arrayList = new ArrayList<>();
+    NoteHelper noteHelper;
     FloatingActionButton floatingId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         floatingId = findViewById(R.id.floatingId);
+        recyclerView = findViewById(R.id.recyclerView);
+        noteHelper = new NoteHelper(this);
         floatingId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

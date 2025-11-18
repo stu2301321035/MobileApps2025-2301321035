@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mynotesapp.MainActivity;
 import com.example.mynotesapp.R;
 import com.example.mynotesapp.model.Note;
 
@@ -18,6 +19,13 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
 
     Context context;
     ArrayList<Note> arrayList = new ArrayList<>();
+
+    public NoteAdapter(Context context, ArrayList<Note> arrayList) {
+        this.context = context;
+        this.arrayList = arrayList;
+    }
+
+
     @NonNull
     @Override
     public NoteAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

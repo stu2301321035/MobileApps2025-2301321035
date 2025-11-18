@@ -1,16 +1,20 @@
 package com.example.mynotesapp;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mynotesapp.adapter.NoteAdapter;
 import com.example.mynotesapp.database.NoteHelper;
 import com.example.mynotesapp.model.Note;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -32,6 +36,19 @@ public class MainActivity extends AppCompatActivity {
         floatingId = findViewById(R.id.floatingId);
         recyclerView = findViewById(R.id.recyclerView);
         noteHelper = new NoteHelper(this);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        Cursor cursor = noteHelper.showData();
+        while (cursor.moveToNext()){
+            arrayList.add(new Note(cursor.getInt(0),cursor.getString(1),cursor.getString(2)));
+        }
+
+        NoteAdapter adapter = new NoteAdapter(this,arrayList);
+        recyclerView.setAdapter(adapter);
+
+
         floatingId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
